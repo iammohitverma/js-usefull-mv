@@ -65,6 +65,31 @@
                             4. Owl carousel slides change with keyboard's arrow button
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv5')">
+                            5. Custom slider using jQuery
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv6')">
+                            6. Custom tab using jQuery
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv7')">
+                            7. Get video duration js
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv8')">
+                            8. JustCo step form validation
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv9')">
+                            9. Form validations
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -224,6 +249,263 @@ jQuery(document.documentElement).keyup(function (event) {
     }
     });
 });   
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv5">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        5. Custom slider using jQuery
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">  // tab_slider start
+var scrollAmount = jQuery(".tab_slider .items button").width(); // Scroll amount in pixels
+$(".tab_slider .prev").on("click", function () {
+    var currentScrollLeft = $(".tab_slider .items").scrollLeft();
+    $(".tab_slider .items").animate(
+    { scrollLeft: currentScrollLeft - scrollAmount },
+    400
+    );
+});
+$(".tab_slider .next").on("click", function () {
+    var currentScrollLeft = $(".tab_slider .items").scrollLeft();
+    $(".tab_slider .items").animate(
+    { scrollLeft: currentScrollLeft + scrollAmount },
+    400
+    );
+});
+// tab_slider end
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv6">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        6. Custom tab using jQuery
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">   // tab functionality start
+$(".tabbing_enabled .items button").on("click", function () {
+    var index = $(this).index();
+    $(".tabbing_enabled .items button").removeClass("active");
+    $(this).addClass("active");
+    $(".tab_content .content_wrap").removeClass("active");
+    $(".tab_content .content_wrap").eq(index).addClass("active");
+});
+// tab functionality end
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv7">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        7. Get video duration js
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">  // Function to handle setting video duration
+function setVideoDuration() {
+    let $videoSrc = $(".video_duration_src");
+    let $videoDuration = $(".video_duration");
+
+    // Wait for the video metadata to load
+    $videoSrc.on("loadedmetadata", function () {
+    // Get the duration of the video in seconds
+    const duration = Math.floor(this.duration);
+
+    // Format the duration into HH:MM:SS format
+    const formattedDuration = formatVideoDuration(duration);
+
+    // Set the formatted duration to all .video_duration elements
+    $videoDuration.each(function () {
+        $(this).html(formattedDuration);
+    });
+
+    // console.log(formattedDuration);
+    });
+}
+
+// Call the function to set video duration initially
+setVideoDuration();
+
+// Rebind the event handler after AJAX call
+$(document).ajaxComplete(function () {
+  setVideoDuration();
+});
+
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv8">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        8. JustCo step form validation
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript"> let promotion_step_form = document.querySelector(".step_form_container form");
+let promotion_step_form_steps = document.querySelectorAll(".step_form_container .step");
+let promotion_step_form_next_btns = document.querySelectorAll(".step_form_container .next_step");
+let promotionStepCount = 0;
+let isPromotionsFormValidate;
+promotion_step_form_next_btns.forEach((nextBtn) => {
+    nextBtn.addEventListener("click", nextStepFun);
+});
+function nextStepFun(e) {
+    promotionFormValidateFun();
+    if (isPromotionsFormValidate == true) {
+        promotionStepCount = promotionStepCount + 1;
+        promotionStepFormActive();
+    }
+}
+function promotionFormValidateFun(e) {
+    let allRequiredFields, anyError;
+    allRequiredFields = promotion_step_form_steps[promotionStepCount].querySelectorAll(".required");
+    allRequiredFields.forEach((currField) => {
+        promotionFieldValidateFun(currField);
+    });
+    anyError = promotion_step_form_steps[promotionStepCount].querySelector(".error");
+    if (anyError) {
+        isPromotionsFormValidate = false;
+    } else {
+        isPromotionsFormValidate = true;
+    }
+}
+function promotionFieldValidateFun(currField) {
+    let currFieldVal = currField.value;
+    if (currFieldVal == "") {
+        promotionFieldSetError(currField, `${errorsMessage.reqMsg}`);
+    } else {
+        promotionFieldSetSuccess(currField);
+    }
+    if (currField.classList.contains("email")) {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (currFieldVal == "") {
+            promotionFieldSetError(currField, `${errorsMessage.emailEnterMsg}`);
+        } else if (!currFieldVal.match(mailformat)) {
+            promotionFieldSetError(currField, `${errorsMessage.validEmailMsg}`);
+        } else {
+            promotionFieldSetSuccess(currField);
+        }
+    }
+}
+function promotionFieldSetError(currField, msg) {
+    let currFieldParent, errorPresent, errorSpan;
+    currFieldParent = currField.parentElement;
+    errorPresent = currFieldParent.querySelector(".error");
+    if (!errorPresent) {
+        errorSpan = document.createElement("span");
+        errorSpan.classList.add("error");
+        errorSpan.textContent = msg;
+        currFieldParent.appendChild(errorSpan);
+    } else {
+        errorPresent.textContent = msg;
+    }
+}
+function promotionFieldSetSuccess(currField) {
+    let currFieldParent, errorPresent;
+    currFieldParent = currField.parentElement;
+    errorPresent = currFieldParent.querySelector(".error");
+    if (errorPresent) {
+        errorPresent.remove();
+    }
+}
+function promotionStepFormActive(e) {
+    let stepsLength = promotion_step_form_steps.length;
+    if (promotionStepCount < stepsLength) {
+        promotion_step_form_steps.forEach((step) => {
+            step.classList.remove("active");
+        });
+        promotion_step_form_steps[promotionStepCount].classList.add("active");
+    }
+}
+if (promotion_step_form) {
+    promotion_step_form.addEventListener("submit", promotionFormSubmitFun);
+}
+function promotionFormSubmitFun(event) {
+    promotionFormValidateFun();
+    event.preventDefault();
+    let currForm = event.target;
+    let formId = currForm.id;
+    let errorPresent = currForm.querySelector(".error");
+    if (!errorPresent) {
+        promotionStepCount = 0;
+        if (formId == "business_referral_form") {
+            is_business_referral_form_submit();
+        }
+        if (formId == "any_another_form_in_future") {
+            is_any_another_form_in_future();
+        }
+    } else {
+        console.log("Error while submit");
+    }
+}
+function is_business_referral_form_submit() {
+    console.log("form is submitted");
+}
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv9">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        9. Form validations
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript"> Form validations
+Validation for multiple forms
+https://codepen.io/iammohitverma/pen/MWOgmEj
+
+FocusOut Validation for Multiple forms using pure Js
+https://codepen.io/iammohitverma/pen/qBPGRJR?editors=1010
 </code>
                                 </pre>
                                 </span>
