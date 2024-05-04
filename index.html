@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./assets/images/fav.png">
+
+    <!-- meta tags -->
+    <title>JS - Code Snippets</title>
+    <meta name="description"
+        content="Find the most useful WordPress code snippets to help you build your website. Get easy-to-implement code solutions for common WordPress tasks, including customizing themes, adding functionality, and optimizing performance. Save time and improve your WordPress development with our collection of code snippets.">
+    <link rel="canonical" href="https://chauhan07.github.io/codepress/">
+    <meta name="robots" content="index,follow">
+
+    <!-- OG Tags -->
+    <meta property="og:title" content="Codepress - WordPress Code Snippets">
+    <meta property="og:description"
+        content="Find the most useful WordPress code snippets to help you build your website. Get easy-to-implement code solutions for common WordPress tasks, including customizing themes, adding functionality, and optimizing performance. Save time and improve your WordPress development with our collection of code snippets.">
+
+    <meta property="og:image" content="https://chauhan07.github.io/codepress/">
+    <meta property="og:url" content="https://chauhan07.github.io/codepress/assets/images/og_image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Bootstrap CSS -->
+    <link href="./assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/style.css" rel="stylesheet">
+    <link href="./assets/prism/prism.css" rel="stylesheet">
+    <link href="./assets/line-number/line-number.css" rel="stylesheet">
+    <script src="./assets/prism/prism.js"></script>
+    <script src="./assets/line-number/line-number.js"></script>
+
+    <title>JS Snippets</title>
+</head>
+
+<body>
+
+    <div class="ap_wrapper">
+        <div class="ap_newDesign left" id="sideBar">
+            <div class="inner">
+                <div class="logoBox">
+                    <span>JS | jQuery</span>
+                    <h1 class="subHdng">Useful Code Snippets of JS | jQuery</h1>
+                </div>
+                <ul>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv1')">
+                            1. Tab Index
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv2')">
+                            2. Set Attribute for icegram plugin's fields
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv3')">
+                            3. Change Owl carousel arrows button attribute
+                        </a>
+                    </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv4')">
+                            4. Owl carousel slides change with keyboard's arrow button
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ap_right_box">
+            <div class="inner_box">
+                <div class="ap_breadCrumbs">
+                    <p>
+                        Home > <span id="changeTopic">GettingStarted</span>
+                    </p>
+
+                    <div id="mobileHamburger">
+                        <div class="hamburger" id="hamburger-1">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <ul>
+                        <li id="mv1">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        1. Tab Index
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">// set tabindex -1 attribute for anchor tag with # value || button url is same as current page url
+jQuery('a').each(function() {
+    // console.log(Window.location.href);
+    if (this.getAttribute('href') === '#' || this.href === window.location.href) {
+    jQuery(this).attr('tabindex', '-1');
+    }
+});
+</code>
+
+
+
+<code class="language-javascript">// for disable focus set "tabindex= -1" for LI tag
+$(".fasd_header .main_header li").each(function () {
+    $(this).attr("tabindex", "-1");
+});
+// for enable focus set  "tabindex= 0" for a tag
+$(".fasd_header .main_header li").each(function () {
+    $(this).find("a").attr("tabindex", "0");
+});
+/*CSS*/
+&:focus > .sub-menu {
+    display: block;
+    @media (max-width: 1199.98px) {
+        display: none;
+    }
+}
+&:focus-within > .sub-menu {
+    display: block;
+    @media (max-width: 1199.98px) {
+        display: none;
+    }
+}
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv2">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        2. Set Attribute for icegram plugin's fields
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">// set for attribute for icegram plugin's input fields
+jQuery("#stay_connected_form .gjs-cell").each(function (index) {
+    let inputId = jQuery(this).find("input").attr("id");
+    jQuery(this).find("label").attr("for", inputId);
+});
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv3">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        3. Change Owl carousel arrows button attribute
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">// Change role ="presentation" attribute to "button"
+jQuery(".owl-prev").each(function (index) {
+    jQuery(this).attr("aria-label", "Previous Slide");
+    jQuery(this).attr("role", "button");
+});
+jQuery(".owl-next").each(function (index) {
+    jQuery(this).attr("aria-label", "Next Slide");
+    jQuery(this).attr("role", "button");
+});    
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv4">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        4. Owl carousel slides change with keyboard's arrow button
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">//Owl carousel slides change with keyboard's arrow button 
+jQuery(document.documentElement).keyup(function (event) {
+    // Select all elements with the class .owl-carousel
+    jQuery(".owl-carousel").each(function () {
+    var owl = jQuery(this);
+    console.log(owl);
+    owl.owlCarousel();
+
+    // handle cursor keys
+    if (event.keyCode == 37) {
+        // go left
+        console.log("left");
+        owl.trigger("prev.owl.carousel", [300]);
+    } else if (event.keyCode == 39) {
+        // go right
+        console.log("right");
+        owl.trigger("next.owl.carousel");
+    }
+    });
+});   
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Box -->
+        <div class="copyRightBox">
+            <p>
+                &copy; All Right Reserved &reg; 2024 by
+                <a href="https://github.com/iammohitverma/" target="_blank">Mohit Verma</a>
+            </p>
+        </div>
+
+        <!-- Modal Show Button -->
+        <div class="formButton">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <img src="./assets/images/contact.png">
+            </a>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <!--modal-dialog-centered , modal-lg-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Contact</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="successMessage">
+                            Your Message has been sent.
+                        </div>
+                        <form class="ap_form" method="POST" onsubmit="formSubmitFun(event)"
+                            name="submit-to-google-sheet"
+                            action="https://script.google.com/macros/s/AKfycbyt75q3PLoV36R3aUgmagvqBokoJaXj6mdnlSg9HwIpQ-hOEUOG6Kx3AYpFNv93hmfZDg/exec">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label>
+                                        Name
+                                        <input type="text" class="form-control" required name="Name">
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        Email
+                                        <input type="email" class="form-control" required name="Email">
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        Message
+                                        <textarea class="form-control" required name="Message"></textarea>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        <input type="submit" class="ap_submit" value="Send Message">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="ap_loader">
+                                <div class="lds-spinner">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal_download" tabindex="-1" aria-labelledby="exampleModalLabel_download"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel_download">Downloading</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Downloading will automatically start in few seconds...</p>
+                        <span id="timer">
+                            5
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/function.js"></script>
+
+</body>
+
+</html>
