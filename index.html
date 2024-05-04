@@ -90,6 +90,11 @@
                             9. Form validations
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv10')">
+                            10. Custom Select field using Chosen library
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -506,6 +511,136 @@ https://codepen.io/iammohitverma/pen/MWOgmEj
 
 FocusOut Validation for Multiple forms using pure Js
 https://codepen.io/iammohitverma/pen/qBPGRJR?editors=1010
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv10">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        10. Custom Select field using Chosen library
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-javascript">// Library Url: https://harvesthq.github.io/chosen/
+
+// service directory filters select 2 start
+// state filter start
+$('[name="state"]').chosen({
+    // disable_search_threshold: 10, //hide search option from select it works only when multiple choice is disabled
+    // max_selected_options: 1 // set limit for multiple select choice
+});
+$('[name="state"]').change(function () {
+    let allValues = $(this).val();
+    console.log(allValues);
+    let allChoices = $(this)
+    .closest(".input_wrap")
+    .find(".chosen-container ul li.search-choice");
+    $("#stateAccordion .chosen-choices").append(allChoices);
+
+    if (allValues.length > 0) {
+        $("#stateAccordion .accordion-button").removeAttr("disabled");
+        $("#stateAccordion .accordion-button").removeClass("collapsed");
+        $("#stateAccordion .accordion-collapse").addClass("show");
+        $('[name="state"] + div input').attr("readonly", "readonly");
+        $('[name="state"] + div .selectedPlaceholder').show();
+    } else {
+        $("#stateAccordion .accordion-button").attr("disabled", "disabled");
+        $("#stateAccordion .accordion-button").addClass("collapsed");
+        $("#stateAccordion .accordion-collapse").removeClass("show");
+        $('[name="state"] + div input').removeAttr("readonly");
+        $('[name="state"] + div .selectedPlaceholder').hide();
+    }
+});
+// state filter end
+
+// services filter start
+$('[name="services"]').chosen();
+$('[name="services"]').change(function () {
+    let allValues = $(this).val();
+    console.log(allValues);
+    let allChoices = $(this)
+    .closest(".input_wrap")
+    .find(".chosen-container ul li.search-choice");
+    $("#servicesAccordion .chosen-choices").append(allChoices);
+    if (allValues.length > 0) {
+        $("#servicesAccordion .accordion-button").removeAttr("disabled");
+        $("#servicesAccordion .accordion-button").removeClass("collapsed");
+        $("#servicesAccordion .accordion-collapse").addClass("show");
+        $('[name="services"] + div input').attr("readonly", "readonly");
+        $('[name="services"] + div .selectedPlaceholder').show();
+    } else {
+        $("#servicesAccordion .accordion-button").attr("disabled", "disabled");
+        $("#servicesAccordion .accordion-button").addClass("collapsed");
+        $("#servicesAccordion .accordion-collapse").removeClass("show");
+        $('[name="services"] + div input').removeAttr("readonly");
+        $('[name="services"] + div .selectedPlaceholder').hide();
+    }
+});
+// services filter end
+
+// age start
+$('[name="age"]').chosen();
+$('[name="age"]').change(function () {
+    let allValues = $(this).val();
+    console.log(allValues);
+    let allChoices = $(this)
+    .closest(".input_wrap")
+    .find(".chosen-container ul li.search-choice");
+    $("#ageAccordion .chosen-choices").append(allChoices);
+    if (allValues.length > 0) {
+        $("#ageAccordion .accordion-button").removeAttr("disabled");
+        $("#ageAccordion .accordion-button").removeClass("collapsed");
+        $("#ageAccordion .accordion-collapse").addClass("show");
+        $('[name="age"] + div input').attr("readonly", "readonly");
+        $('[name="age"] + div .selectedPlaceholder').show();
+    } else {
+        $("#ageAccordion .accordion-button").attr("disabled", "disabled");
+        $("#ageAccordion .accordion-button").addClass("collapsed");
+        $("#ageAccordion .accordion-collapse").removeClass("show");
+        $('[name="age"] + div input').removeAttr("readonly");
+        $('[name="age"] + div .selectedPlaceholder').hide();
+    }
+});
+// age end
+
+// billing start
+$('[name="billing_method"]').chosen();
+$('[name="billing_method"]').change(function () {
+    let allValues = $(this).val();
+    console.log(allValues);
+    let allChoices = $(this)
+    .closest(".input_wrap")
+    .find(".chosen-container ul li.search-choice");
+    $("#billingAccordion .chosen-choices").append(allChoices);
+    if (allValues.length > 0) {
+        $("#billingAccordion .accordion-button").removeAttr("disabled");
+        $("#billingAccordion .accordion-button").removeClass("collapsed");
+        $("#billingAccordion .accordion-collapse").addClass("show");
+        $('[name="billing_method"] + div input').attr("readonly", "readonly");
+        $('[name="billing_method"] + div .selectedPlaceholder').show();
+    } else {
+        $("#billingAccordion .accordion-button").attr("disabled", "disabled");
+        $("#billingAccordion .accordion-button").addClass("collapsed");
+        $("#billingAccordion .accordion-collapse").removeClass("show");
+        $('[name="billing_method"] + div input').removeAttr("readonly");
+        $('[name="billing_method"] + div .selectedPlaceholder').hide();
+    }
+});
+// billing end
+
+$(".selectedPlaceholder").each(function () {
+    $(this).closest(".input_wrap").find(".chosen-container-multi").prepend($(this));
+});
+// service directory filters select 2 end
 </code>
                                 </pre>
                                 </span>
