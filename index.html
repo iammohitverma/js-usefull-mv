@@ -95,6 +95,11 @@
                             10. Custom Select field using Chosen library
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv11')">
+                            11. Swiper Breakpoints
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -641,6 +646,110 @@ $(".selectedPlaceholder").each(function () {
     $(this).closest(".input_wrap").find(".chosen-container-multi").prepend($(this));
 });
 // service directory filters select 2 end
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv11">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        11. Swiper Breakpoints
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-react">Swiper Breakpoints
+
+
+    import life from "/images/life.jpeg";
+    import lilly from "/images/lilly.jpeg";
+    import myob from "/images/myob.jpeg";
+    import oldendroff from "/images/oldendroff.jpeg";
+    import trustly from "/images/trustly.jpeg";
+    import citrus from "/images/citrus.jpeg";
+    import grabyo from "/images/grabyo.jpeg";
+    import belimo from "/images/belimo.jpeg";
+    import { Swiper, SwiperSlide } from "swiper/react";
+    import "swiper/css";
+    import "swiper/css/autoplay";
+    
+    import { Autoplay } from "swiper/modules";
+    import Common from "./Common";
+    
+    const com = {
+      padding: "40px",
+    };
+    
+    const Carousel = () => {
+      return (
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={5}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          breakpoints={{
+            // when window width is >= 640px
+            0: {
+              slidesPerView: 1,
+            },
+            576: {
+              slidesPerView: 2,
+            },
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 3,
+            },
+            // when window width is >= 1024px
+            1024: {
+              slidesPerView: 4,
+            },
+            // when window width is >= 1280px
+            1280: {
+              slidesPerView: 5,
+            },
+          }}
+        >
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={life} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={grabyo} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={lilly} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={myob} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={belimo} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={citrus} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={oldendroff} />
+          &lt;/SwiperSlide>
+          &lt;SwiperSlide style={com}>
+            &lt;Common imgsrc={trustly} />
+          &lt;/SwiperSlide>
+        &lt;/Swiper>
+      );
+    };
+    export default Carousel;
+    
 </code>
                                 </pre>
                                 </span>
