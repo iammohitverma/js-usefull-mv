@@ -105,6 +105,11 @@
                             12. Luxy js
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv13')">
+                            13. Set UTM Parameters
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -785,6 +790,68 @@ $(".selectedPlaceholder").each(function () {
         });
      }
      &lt;/script>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv13">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        13. Set UTM Parameters
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-react">// Set UTM parameters
+// Function to get URL parameters
+function getUrlParams() {
+  debugger;
+  const params = {};
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  urlParams.forEach((value, key) => {
+    params[key] = value;
+  });
+  return params;
+}
+
+// Function to set hidden form fields
+function setHiddenFields() {
+  const params = getUrlParams();
+
+  const utmSourceField = document.querySelector('input[name="utm_source"]');
+  const utmMediumField = document.querySelector('input[name="utm_medium"]');
+  const utmCampaignField = document.querySelector('input[name="utm_campaign"]');
+  const utmTermField = document.querySelector('input[name="utm_term"]');
+  const utmContentField = document.querySelector('input[name="utm_content"]');
+
+  if (utmSourceField && params.utm_source) {
+    utmSourceField.value = params.utm_source;
+  }
+  if (utmMediumField && params.utm_medium) {
+    utmMediumField.value = params.utm_medium;
+  }
+  if (utmCampaignField && params.utm_campaign) {
+    utmCampaignField.value = params.utm_campaign;
+  }
+  if (utmTermField && params.utm_term) {
+    utmTermField.value = params.utm_term;
+  }
+  if (utmContentField && params.utm_content) {
+    utmContentField.value = params.utm_content;
+  }
+}
+
+// Call the function to set hidden fields on page load
+document.addEventListener("DOMContentLoaded", setHiddenFields);
+
 </code>
                                 </pre>
                                 </span>
