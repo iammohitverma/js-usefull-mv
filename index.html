@@ -110,6 +110,11 @@
                             13. Set UTM Parameters
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv14')">
+                            14. Read more button expand
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -852,6 +857,40 @@ function setHiddenFields() {
 // Call the function to set hidden fields on page load
 document.addEventListener("DOMContentLoaded", setHiddenFields);
 
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv14">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        14. Read more button expand
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-react"> jQuery(".read_more_text_box .read_more_expand_btn").click(function (e) {
+    e.preventDefault();
+    var $this = jQuery(this);
+    var $textBox = jQuery(".read_more_text_hide");
+
+    // Toggle the text box visibility
+    $textBox.slideToggle();
+
+    // Toggle the button text
+    if ($this.hasClass("active")) {
+      $this.removeClass("active").text("Read More");
+    } else {
+      $this.addClass("active").text("Read Less");
+    }
+  });
 </code>
                                 </pre>
                                 </span>
