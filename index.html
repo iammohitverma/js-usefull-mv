@@ -115,6 +115,11 @@
                             14. Read more button expand
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv15')">
+                            15. Play button for play video in popup autoplay iframe
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -891,6 +896,53 @@ document.addEventListener("DOMContentLoaded", setHiddenFields);
       $this.addClass("active").text("Read Less");
     }
   });
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv15">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        15. Play button for play video in popup autoplay iframe
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-react"> //play button for play video in popup autoplay iframe
+$(".team-section .play_btn").click(function () {
+    const $card = $(this).closest(".card");
+    const videoSource = $card.find(".play_video").attr("src");
+    const iframeSource = $card.find(".play_iframe").attr("src");
+    const $popupWrapper = $(".video_pop_up_sec_wrap");
+    
+    // Clear existing content
+    $popupWrapper.empty();
+
+    if (iframeSource) {
+        const url = new URL(iframeSource);
+        url.searchParams.delete("si");
+
+        $popupWrapper.append(`
+            &lt;iframe src="${url}?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>&lt;/iframe>
+            &lt;div class="close_btn" id="hide_btn">&lt;img src="/wp-content/uploads/2024/09/cross_btn.png" alt="Close">&lt;/div>
+        `);
+    } else if (videoSource) {
+        $popupWrapper.append(`
+            &lt;video src="${videoSource}" class="play_video" autoplay muted>&lt;/video>
+            &lt;div class="close_btn" id="hide_btn">&lt;img src="/wp-content/uploads/2024/09/cross_btn.png" alt="Close">&lt;/div>
+        `);
+    }
+
+    // Show the video pop-up section
+    $(".team-section .video_pop_up_sec").addClass("active");
+});
 </code>
                                 </pre>
                                 </span>
