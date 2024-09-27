@@ -120,6 +120,11 @@
                             15. Play button for play video in popup autoplay iframe
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv16')">
+                            16. Owl carousel slide change on tab click
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -943,6 +948,58 @@ $(".team-section .play_btn").click(function () {
     // Show the video pop-up section
     $(".team-section .video_pop_up_sec").addClass("active");
 });
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv16">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        16. Owl carousel slide change on tab click
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-react"> $(document).ready(function() {
+    var owl = $('.owl-carousel');
+    $('.menu-bar').click(function() {
+      $('.nav-right').toggle();
+    });
+    $('.nav-pills').click(function() {
+      debugger
+      let count = $(this).find(".count").text();
+      console.log(count);
+      owl.trigger('to.owl.carousel', [count-1]); // 3 is the index for the 4th slide
+    });
+    
+    $('.tab-pane.owl-carousel').owlCarousel({
+      loop:true,
+      margin:10,
+      nav:true,
+      item: 1, responsive:{
+  0:{
+      items:1
+  },
+  600:{
+      items:3
+  },
+  1000:{
+      items:1
+  }
+  }
+  })
+  });
+  
+  /*************************************************/
+  //you can do also using urlhash method in owl
+  /*************************************************/
 </code>
                                 </pre>
                                 </span>
