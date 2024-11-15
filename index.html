@@ -125,6 +125,11 @@
                             16. Owl carousel slide change on tab click
                         </a>
                     </li>
+                    <li data-topic="Basic Functions">
+                        <a href="javascript:void(0)" onclick="scrollToSection('mv17')">
+                            17. Function to add 'active' class (before the target date and time)
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1000,6 +1005,44 @@ $(".team-section .play_btn").click(function () {
   /*************************************************/
   //you can do also using urlhash method in owl
   /*************************************************/
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="mv17">
+                            <div>
+                                <h3>
+                                    <span class="text">
+                                        17. Function to add 'active' class (before the target date and time)
+                                    </span>
+                                </h3>
+
+                                <p class="topicDesc">
+
+                                </p>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-react"> // Function to add 'active' class (before the target date and time)
+    setTimeout(function () {
+      const now = new Date();
+      const currentDate = now.getTime(); // Current date in milliseconds
+    
+      // Target date: 15 November 2024 at 9:00 AM
+      const targetDate = new Date('2024-11-15T09:00:00').getTime();
+    
+      // Check if the current date and time is before 15 November 2024 at 9:00 AM
+      if (currentDate < targetDate) {
+        $(".fasd_home_popup").addClass("active");
+        console.log("Added 'active' class to .fasd_home_popup before 15 November 2024 at 9:00 AM");
+      } else {
+        console.log("Not adding 'active' class because it's after 15 November 2024 at 9:00 AM.");
+      }
+    }, 2000); // 2000ms = 2 seconds
+    
+    // Call the function to start displaying the time and checking for 15 November 2024 at 9:00 AM
+    showTimeInConsole();
 </code>
                                 </pre>
                                 </span>
